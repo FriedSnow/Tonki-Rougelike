@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 7accdc193aa1d3947902d3fc07a1ee99
+  m_SerializeEntries:
+  - m_GUID: 4bc49bbd461ee6649b64dda8b552944a
+    m_Address: Assets/Items/Items-2/Common
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Common Items
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c40435a6a41644041b13c39f2c747051
+    m_Address: Assets/Items/Items-2/Rare
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Rare Items
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f3a6cfcc019c4b14b83876879bc4d877
+    m_Address: Assets/Items/ItemsByQuality/0Quality
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - 0QualityItems
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3b1c19e8539c4ad4d9e8d6f1c0790ba5
+    m_Address: Assets/Items/ItemsByQuality/1Quality
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - 1QualityItems
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 565ae9fb7cfdece4baf66aaaa1d9eae0
+    m_Address: Assets/Items/ItemsByQuality/2Quality
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - 2QualityItems
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4a016f870de213647be0517a3ababa76
+    m_Address: Assets/Items/ItemsByQuality/3Quality
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - 3QualityItems
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 9465c083ee359c847b45bb095e0a015b, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 5e76f152bf205614187677cc5a728cbd, type: 2}
+    - {fileID: 11400000, guid: cd0a30a6fdbdd784285d44f2fc68ff26, type: 2}
