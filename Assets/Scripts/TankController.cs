@@ -22,6 +22,8 @@ public class TankController : MonoBehaviour
     public int health = 3;
     public int coins = 0;
     public int maxCoins = 99;
+    public bool canTakeHealthUp = true;
+    public bool canTakeArmor = true;
     // ---------- ---------- ---------- ---------- ---------- 
     [Header("Префабы снарядов")]
     public GameObject primaryBulletPrefab;
@@ -222,11 +224,20 @@ public class TankController : MonoBehaviour
     }
     public void AddArmor(int amount)
     {
-        if (armor < maxHealth)
+        if (armor < maxHealth && canTakeArmor)
         {
             armor += amount;
             healthManager.SetCurrentArmor(armor);
         }
+    }
+    public void HealthUp(int amount)
+    {
+        if (canTakeHealthUp)
+            maxHealth += amount;
+    }
+    public void FullHealth()
+    {
+        health = maxHealth;
     }
 
     private IEnumerator BecomeInvincible()
@@ -247,7 +258,7 @@ public class TankController : MonoBehaviour
         if (PlayerPrefs.GetInt("Unlockable5") == 0)
         {
             PlayerPrefs.SetInt("Unlockable5", 1);
-            textSlide.ShowItemName("New Tank Unlocked\nпомер");
+            textSlide.ShowItemName("Достижение получено!", Color.cyan);
         }
     }
 
@@ -275,7 +286,7 @@ public class TankController : MonoBehaviour
         if (coins >= 15 && PlayerPrefs.GetInt("Unlockable2") == 0)
         {
             PlayerPrefs.SetInt("Unlockable2", 1);
-            textSlide.ShowItemName("New Tank Unlocked\n15 coins");
+            textSlide.ShowItemName("Достижение получено!", Color.cyan);
         }
     }
     public void GetUI()

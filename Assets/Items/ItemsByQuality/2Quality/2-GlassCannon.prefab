@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8670187996279300337}
   - component: {fileID: 4763213450913310560}
-  - component: {fileID: 2956305421457535568}
   - component: {fileID: 1563857290832573667}
+  - component: {fileID: 2956305421457535568}
   - component: {fileID: 6056229544625622275}
   - component: {fileID: 8587460561838421686}
   m_Layer: 0
@@ -45,6 +45,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6852267363848333706}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1563857290832573667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6852267363848333706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b969bc0ff4465f428b451bd4ae0dc7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemIconSprite: {fileID: 21300000, guid: eef34c6d53fb2a446a5c61ce4723b08c, type: 3}
+  coinPickupSoundPrefab: {fileID: 7170229779030949701, guid: 00f827522672f0d4995e20a3906eee87, type: 3}
 --- !u!114 &2956305421457535568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,21 +88,6 @@ MonoBehaviour:
   message2: '-'
   color2Selection: 0
   color2: {r: 1, g: 1, b: 1, a: 1}
---- !u!114 &1563857290832573667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6852267363848333706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b969bc0ff4465f428b451bd4ae0dc7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemIconSprite: {fileID: 21300000, guid: eef34c6d53fb2a446a5c61ce4723b08c, type: 3}
-  coinPickupSoundPrefab: {fileID: 7170229779030949701, guid: 00f827522672f0d4995e20a3906eee87, type: 3}
-  isCollected: 0
 --- !u!23 &6056229544625622275
 MeshRenderer:
   m_ObjectHideFlags: 0

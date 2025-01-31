@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 7accdc193aa1d3947902d3fc07a1ee99
   m_currentHash:
     serializedVersion: 2
-    Hash: fe6a8fa84e448045e6223bbc88f30bce
+    Hash: 63f91f869698b6c0842d68470fe25f7c
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -93,6 +93,8 @@ MonoBehaviour:
     - 1QualityItems
     - 2QualityItems
     - 3QualityItems
+    - Enemies
+    - Pickups
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 8f15aef251a9ee143916044b0887e9c7, type: 2}

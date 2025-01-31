@@ -32,7 +32,7 @@ public class StatChangeItem : StandardItem
         color2 = Colors.GetColorByQuality(color2Selection);
 
         player.addedDamage += damageChange;
-        player.maxHealth += maxHealthChange;
+        player.HealthUp(maxHealthChange);
         player.maxSpeed += maxSpeedChange; 
         player.turnSpeed += maxSpeedChange * 2;
         player.fireRate += fireRateChange;

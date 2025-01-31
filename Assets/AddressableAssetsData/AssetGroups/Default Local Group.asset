@@ -53,6 +53,18 @@ MonoBehaviour:
     m_SerializedLabels:
     - 3QualityItems
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2b8a7c76db2e6e347a8947e2c8c0a005
+    m_Address: Assets/Enemies
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Enemies
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1ec5d81c44562854492f1c4f6e13a156
+    m_Address: Assets/Items/Pickups
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Pickups
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 9465c083ee359c847b45bb095e0a015b, type: 2}
   m_SchemaSet:

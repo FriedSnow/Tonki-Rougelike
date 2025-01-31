@@ -4,12 +4,11 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using System.Linq;
 
-public class DeveloperConsole : MonoBehaviour
+public class DeveloperConsole : StandardItem
 {
     private static DeveloperConsole instance;
     private bool isActive = false;
     private string inputBuffer = "";
-
     void Awake()
     {
         if (instance == null)
@@ -20,6 +19,25 @@ public class DeveloperConsole : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+        if (textSlide == null)
+        {
+            textSlide = FindObjectOfType<TextSlide>();
+            if (textSlide == null)
+            {
+                Debug.LogError("TextSlide not found!");
+            }
+        }
+    }
+    private void Start()
+    {
+        if (textSlide == null)
+        {
+            textSlide = FindObjectOfType<TextSlide>();
+            if (textSlide == null)
+            {
+                Debug.LogError("TextSlide not found!");
+            }
         }
     }
 
@@ -68,6 +86,12 @@ public class DeveloperConsole : MonoBehaviour
         {
             case "spawn":
                 SpawnPrefab(args);
+                break;
+            case "goida":
+                textSlide.ShowItemName("ГОЙДА!", Color.red, "ГОООООООООООООООООЛ");
+                break;
+            case "hohly":
+                textSlide.ShowItemName("хохлы?", Color.cyan, "пидорасы!", Color.red);
                 break;
             default:
                 Debug.Log($"Unknown command: {commandName}");
@@ -155,10 +179,10 @@ public class DeveloperConsole : MonoBehaviour
             case "q3":
                 basePath = "Items/ItemsByQuality/3Quality/";
                 break;
-            case "pickup":
+            case "p":
                 basePath = "Items/Pickups/";
                 break;
-            case "enemy":
+            case "e":
                 basePath = "Enemies/";
                 break;
             default:
@@ -213,4 +237,10 @@ public class DeveloperConsole : MonoBehaviour
             return null;
         }
     }
+
+    void CustiomCommand(string command)
+    {
+
+    }
+    protected override void ApplyEffect() { }
 }

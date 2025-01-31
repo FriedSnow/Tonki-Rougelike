@@ -2,16 +2,23 @@
   <assembly fullname="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="AmmoSwapItem" preserve="all" />
     <type fullname="ArtilleryMarkerAmmo" preserve="all" />
+    <type fullname="BreakableObject" preserve="all" />
     <type fullname="CumulativeAmmo" preserve="all" />
+    <type fullname="EnemyController" preserve="all" />
     <type fullname="ExplosiveAmmo" preserve="all" />
+    <type fullname="FloorSwitcher" preserve="all" />
     <type fullname="FragmentingAmmo" preserve="all" />
     <type fullname="GlassCannon" preserve="all" />
     <type fullname="HealthToArmor" preserve="all" />
     <type fullname="MoneyPowerItem" preserve="all" />
     <type fullname="MultishotAmmo" preserve="all" />
     <type fullname="MultiShotOnHitItem" preserve="all" />
+    <type fullname="Pickup" preserve="all" />
     <type fullname="RocketAmmo" preserve="all" />
+    <type fullname="RoomManager" preserve="all" />
+    <type fullname="RoomTrigger" preserve="all" />
     <type fullname="ShieldItem" preserve="all" />
+    <type fullname="ShopItem" preserve="all" />
     <type fullname="ShotgunAmmo" preserve="all" />
     <type fullname="StandardAmmo" preserve="all" />
     <type fullname="StatChangeItem" preserve="all" />
@@ -51,6 +58,8 @@
   </assembly>
   <assembly fullname="UnityEngine.PhysicsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="UnityEngine.BoxCollider" preserve="all" />
+    <type fullname="UnityEngine.CapsuleCollider" preserve="all" />
+    <type fullname="UnityEngine.MeshCollider" preserve="all" />
     <type fullname="UnityEngine.Rigidbody" preserve="all" />
     <type fullname="UnityEngine.SphereCollider" preserve="all" />
   </assembly>
