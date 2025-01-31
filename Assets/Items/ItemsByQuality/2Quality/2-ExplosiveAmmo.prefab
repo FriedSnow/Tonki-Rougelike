@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 6056229544625622275}
   - component: {fileID: 8587460561838421686}
   m_Layer: 0
-  m_Name: 2-ExplosiveiAmmo
+  m_Name: 2-ExplosiveAmmo
   m_TagString: Pickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

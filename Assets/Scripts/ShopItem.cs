@@ -6,24 +6,25 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class ShopItem : MonoBehaviour
 {
-    public bool isRare;
+    public bool isRare; // Оставим для совместимости, но будем использовать редкость из пула
     public bool isPickup;
     public int cost = 1;
     public Transform itemSpawn;
-    public List<GameObject> dropItemPool = new List<GameObject>(); // Используем List вместо массива для динамической загрузки
-    public List<GameObject> rareDropItemPool = new List<GameObject>();
+    public List<GameObject>[] dropItemPools = new List<GameObject>[4]; // Пулы для 4 уровней редкости
     public GameObject[] pickupsPool;
-
     private TankController player;
     private GameObject item;
     private Collider itemCollider;
     private bool isSpawned = false;
-
-    private bool commonItemsLoaded = false;
-    private bool rareItemsLoaded = false;
+    private bool[] itemsLoaded = new bool[4]; // Массив для отслеживания загрузки каждого пула
 
     private void Awake()
     {
+        // Инициализируем пуллы
+        for (int i = 0; i < 4; i++)
+        {
+            dropItemPools[i] = new List<GameObject>();
+        }
         // Загружаем предметы при инициализации объекта
         LoadDropItems();
     }
@@ -33,16 +34,13 @@ public class ShopItem : MonoBehaviour
         // Если это Pickup, делаем его не редким, и наоборот
         if (isPickup) isRare = false;
         if (isRare) isPickup = false;
-
         player = FindObjectOfType<TankController>();
-
         // Проверяем, что ссылка на itemSpawn установлена
         if (itemSpawn == null)
         {
             Debug.LogError("itemSpawn не установлен в инспекторе!");
             return; // Выходим из метода, чтобы не вызвать NullReferenceException
         }
-
         // Запускаем проверку загрузки предметов и их спавн
         StartCoroutine(CheckItemsLoadedAndSpawn());
     }
@@ -50,21 +48,20 @@ public class ShopItem : MonoBehaviour
     // Coroutine для проверки загрузки предметов и их спавна
     IEnumerator CheckItemsLoadedAndSpawn()
     {
-        // Ждём завершения загрузки предметов
-        yield return new WaitUntil(() => commonItemsLoaded && rareItemsLoaded);
-
+        // Ждём завершения загрузки всех предметов
+        yield return new WaitUntil(() => itemsLoaded[0] && itemsLoaded[1] && itemsLoaded[2] && itemsLoaded[3]);
         // Проверяем и выполняем спавн предмета после загрузки
         if (!isSpawned)
         {
-            if (!isRare && !isPickup && dropItemPool.Count > 0)
+            int rarityLevel = GetRarityLevel();
+            if (rarityLevel >= 0 && rarityLevel < 4)
             {
-                item = Instantiate(dropItemPool[Random.Range(0, dropItemPool.Count)], itemSpawn.position, transform.rotation); // обычный предмет
+                if (dropItemPools[rarityLevel].Count > 0)
+                {
+                    item = Instantiate(dropItemPools[rarityLevel][Random.Range(0, dropItemPools[rarityLevel].Count)], itemSpawn.position, transform.rotation); // Предмет определенной редкости
+                }
             }
-            else if (!isPickup && isRare && rareDropItemPool.Count > 0)
-            {
-                item = Instantiate(rareDropItemPool[Random.Range(0, rareDropItemPool.Count)], itemSpawn.position, transform.rotation); // редкий предмет
-            }
-            else if (isPickup && pickupsPool.Length > 0)
+            else if (rarityLevel == -1 && pickupsPool.Length > 0)
             {
                 item = Instantiate(pickupsPool[Random.Range(0, pickupsPool.Length)], itemSpawn.position, transform.rotation); // пикап
             }
@@ -78,7 +75,6 @@ public class ShopItem : MonoBehaviour
                     itemCollider.enabled = false; // Отключаем коллайдер до покупки
                 }
             }
-
             isSpawned = true; // Отмечаем, что предмет был заспавнен
         }
     }
@@ -96,44 +92,44 @@ public class ShopItem : MonoBehaviour
     // Загрузка предметов через Addressables
     void LoadDropItems()
     {
-        // Загрузка обычных предметов с меткой "Common Items"
-        Addressables.LoadAssetsAsync<GameObject>("Common Items", obj =>
+        // Загрузка предметов для каждого уровня редкости
+        for (int rarityLevel = 0; rarityLevel < 4; rarityLevel++)
         {
-            dropItemPool.Add(obj); // Добавляем загруженный объект в пул обычных предметов
-        }).Completed += OnCommonItemsLoaded;
+            int currentRarity = rarityLevel;
+            string label = $"{rarityLevel}QualityItems";
 
-        // Загрузка редких предметов с меткой "Rare Items"
-        Addressables.LoadAssetsAsync<GameObject>("Rare Items", obj =>
-        {
-            rareDropItemPool.Add(obj); // Добавляем загруженный объект в пул редких предметов
-        }).Completed += OnRareItemsLoaded;
-    }
-
-    // Обработка завершения загрузки обычных предметов
-    void OnCommonItemsLoaded(AsyncOperationHandle<IList<GameObject>> handle)
-    {
-        if (handle.Status == AsyncOperationStatus.Succeeded)
-        {
-            Debug.Log("Обычные предметы успешно загружены. Количество: " + dropItemPool.Count);
-            commonItemsLoaded = true; // Отмечаем, что обычные предметы загружены
-        }
-        else
-        {
-            Debug.LogError("Ошибка при загрузке обычных предметов.");
+            Addressables.LoadAssetsAsync<GameObject>(label, obj =>
+            {
+                dropItemPools[currentRarity].Add(obj);
+            }).Completed += handle =>
+            {
+                if (handle.Status == AsyncOperationStatus.Succeeded)
+                {
+                    Debug.Log($"Предметы с редкостью {currentRarity} успешно загружены. Количество: {dropItemPools[currentRarity].Count}");
+                    itemsLoaded[currentRarity] = true; // Отмечаем, что предметы данного уровня редкости загружены
+                }
+                else
+                {
+                    Debug.LogError($"Ошибка при загрузке предметов с редкостью {currentRarity}.");
+                }
+            };
         }
     }
 
-    // Обработка завершения загрузки редких предметов
-    void OnRareItemsLoaded(AsyncOperationHandle<IList<GameObject>> handle)
+    // Получение уровня редкости с учетом заданных вероятностей
+    private int GetRarityLevel()
     {
-        if (handle.Status == AsyncOperationStatus.Succeeded)
-        {
-            Debug.Log("Редкие предметы успешно загружены. Количество: " + rareDropItemPool.Count);
-            rareItemsLoaded = true; // Отмечаем, что редкие предметы загружены
-        }
+        float rnd = Random.Range(0f, 100f);
+
+        if (rnd < 10)
+            return 0; // Качество 0 (10% шанс)
+        else if (rnd < 40) // 10 + 30 = 40
+            return 1; // Качество 1 (30% шанс)
+        else if (rnd < 60) // 40 + 20 = 60
+            return 2; // Качество 2 (20% шанс)
+        else if (rnd < 70) // 60 + 10 = 70
+            return 3; // Качество 3 (10% шанс)
         else
-        {
-            Debug.LogError("Ошибка при загрузке редких предметов.");
-        }
+            return -1; // Выбор случайного предмета из pickupsPool (30% шанс)
     }
 }

@@ -3,6 +3,7 @@
     <type fullname="AmmoSwapItem" preserve="all" />
     <type fullname="ArtilleryMarkerAmmo" preserve="all" />
     <type fullname="CumulativeAmmo" preserve="all" />
+    <type fullname="ExplosiveAmmo" preserve="all" />
     <type fullname="FragmentingAmmo" preserve="all" />
     <type fullname="GlassCannon" preserve="all" />
     <type fullname="HealthToArmor" preserve="all" />
