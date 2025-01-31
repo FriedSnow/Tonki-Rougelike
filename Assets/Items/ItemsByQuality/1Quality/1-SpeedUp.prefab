@@ -164,7 +164,7 @@ MonoBehaviour:
   message1: ...
   color1Selection: 1
   color1: {r: 0.39215687, g: 0.78431374, b: 1, a: 1}
-  message2: "\u0423\u0440\u043E\u043D +"
+  message2: "\u0421\u043A\u043E\u0440\u043E\u0441\u0442\u044C +"
   color2Selection: 0
   color2: {r: 0.3137255, g: 0.9019608, b: 0.39215687, a: 1}
 --- !u!23 &6056229544625622275

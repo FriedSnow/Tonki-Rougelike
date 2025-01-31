@@ -142,7 +142,7 @@ public class EnemyController : MonoBehaviour
         {
             bossHealth.HideHealthBar();
         }
-        Debug.Log("ПОМЕР но не я");
+        // Debug.Log("ПОМЕР но не я");
         if (destroyParticlesPrefab != null)
         {
             GameObject destroyParticles = Instantiate(destroyParticlesPrefab, transform.position + new Vector3(0, 2, 0), new Quaternion(0, Random.Range(0, 90), 0, Random.Range(0, 90)));

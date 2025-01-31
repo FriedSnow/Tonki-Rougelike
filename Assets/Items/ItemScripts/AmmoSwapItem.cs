@@ -4,10 +4,10 @@ public class AmmoSwapItem : StandardItem
 {
     public GameObject projectilePrefab;
     public bool isSecondary;
-    public bool isMoving = false;
+    public bool NonStatChange = false;
     private void Update()
     {
-        if (isMoving)
+        if (NonStatChange)
             Move();
     }
     protected override void ApplyEffect()

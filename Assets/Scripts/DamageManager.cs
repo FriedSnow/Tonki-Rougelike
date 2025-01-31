@@ -5,7 +5,8 @@ using UnityEngine;
 public class DamageManager : MonoBehaviour
 {
     // TextSlide textSlide;
-    public enum DamageType {
+    public enum DamageType
+    {
         regular,
         explosive
     }
@@ -75,7 +76,10 @@ public class DamageManager : MonoBehaviour
             BreakableObject breakable = collider.GetComponent<BreakableObject>();
             if (breakable != null)
             {
-                breakable.TakeDamage(damage);
+                if (damageType == DamageType.explosive)
+                    breakable.TakeDamage(damage * 2);
+                else
+                    breakable.TakeDamage(damage);
             }
         }
     }
