@@ -4,7 +4,6 @@ using UnityEngine;
 public class ExplosiveAmmo : StandardAmmo
 {
     public float explosionRadius = 5f; // Радиус взрыва
-    public GameObject explosionSpherePrefab; // Префаб сферы взрыва
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -56,27 +55,8 @@ public class ExplosiveAmmo : StandardAmmo
             }
         }
 
-        // Создаем и отображаем сферу взрыва
-        ShowExplosionSphere();
-
         // Визуализация радиуса взрыва для дебага
         DebugExplosionRadius();
-    }
-
-    private void ShowExplosionSphere()
-    {
-        if (explosionSpherePrefab != null)
-        {
-            GameObject explosionSphere = Instantiate(explosionSpherePrefab, transform.position, Quaternion.identity);
-            SphereCollider sphereCollider = explosionSphere.GetComponent<SphereCollider>();
-            if (sphereCollider != null)
-            {
-                sphereCollider.radius = explosionRadius;
-            }
-
-            // Устанавливаем срок жизни сферы взрыва
-            Destroy(explosionSphere, 2f);
-        }
     }
 
     private void DebugExplosionRadius()

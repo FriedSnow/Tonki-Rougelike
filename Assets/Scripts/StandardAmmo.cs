@@ -32,7 +32,7 @@ public class StandardAmmo : MonoBehaviour
         {
             DamageManager.DealDamage(collision, damage);
             GameObject explosion = Instantiate(explosionPatricles, transform.position, transform.rotation);
-            Destroy(explosion, 5f);
+            Destroy(explosion, 1f);
             Destroy(gameObject);
             isHit = true;
         }
