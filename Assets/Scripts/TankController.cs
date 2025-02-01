@@ -9,8 +9,8 @@ public class TankController : MonoBehaviour
     // ---------- ---------- STATS ---------- ----------
     [Header("Статы")]
     public int damage = 10;
-    public int maxHealth = 5;
-    public float maxSpeed = 50f;
+    public int maxHealth = 50;
+    public float maxSpeed = 40f;
     public float fireRate = .5f;
     public float projectileSpeed = 100f;
     public int luck = 0;
@@ -19,7 +19,7 @@ public class TankController : MonoBehaviour
     [Header("Почти статы")]
     public int addedDamage = 0;
     public int baseDamage = 0;
-    public int health = 3;
+    public int health = 50;
     public int coins = 0;
     public int maxCoins = 99;
     public bool canTakeHealthUp = true;

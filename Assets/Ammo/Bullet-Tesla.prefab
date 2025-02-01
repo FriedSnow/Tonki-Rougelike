@@ -51,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 25
   damage: 5
-  strikeInterval: 0.5
+  strikeInterval: 0.25
   lightningColor: {r: 0.1745283, g: 0.6181018, b: 1, a: 1}
   lightningMaterial: {fileID: 2100000, guid: 78a0c96b99e05a546b4227a7cd415906, type: 2}
   hitSoundPrefab: {fileID: 7170229779030949701, guid: 3406b72833c260e43a481701c25cdd47, type: 3}

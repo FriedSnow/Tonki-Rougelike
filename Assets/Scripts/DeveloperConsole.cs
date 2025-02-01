@@ -60,7 +60,7 @@ public class DeveloperConsole : StandardItem
         }
     }
 
-    void OnGUI()
+    void OnGUI() 
     {
         if (!isActive) return;
 
@@ -91,7 +91,7 @@ public class DeveloperConsole : StandardItem
                 textSlide.ShowItemName("ГОЙДА!", Color.red, "ГОООООООООООООООООЛ");
                 break;
             case "hohly":
-                textSlide.ShowItemName("хохлы?", Color.cyan, "пидорасы!", Color.red);
+                textSlide.ShowItemName("хохлы?", Color.cyan, "бомбить!", Color.red);
                 break;
             default:
                 Debug.Log($"Unknown command: {commandName}");

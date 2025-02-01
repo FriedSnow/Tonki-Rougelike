@@ -160,7 +160,7 @@ public class EnemyController : MonoBehaviour
             if (PlayerPrefs.GetInt("Unlockable4") == 0)
             {
                 PlayerPrefs.SetInt("Unlockable4", 1);
-                textSlide.ShowItemName("New Tank Unlocked\nkilled Maus");
+                textSlide.ShowItemName("Достижение получено", Color.cyan);
             }
             Progression.IncrementProgression(0);
         }
@@ -168,7 +168,7 @@ public class EnemyController : MonoBehaviour
 
     private void SpawnLoot()
     {
-        float rnd = Random.Range(0, 101) - player.luck;
+        float rnd = Random.Range(0, 101);// - player.luck;
         Debug.Log($"Число генерации - {rnd}");
         int rarityLevel = GetRarityLevel(rnd);
         // Debug.Log($"Определенная редкость - {rarityLevel}");
@@ -216,7 +216,7 @@ public class EnemyController : MonoBehaviour
             return 2; // Качество 2
         else if (rnd < 50)
             return 1; // Качество 1
-            //сюда
+                      //сюда
         else
             return 3; // Не выпадает из врагов
     }
