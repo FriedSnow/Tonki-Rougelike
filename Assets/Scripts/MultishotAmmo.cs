@@ -24,11 +24,9 @@ public class MultishotAmmo : StandardAmmo
     // Метод для выпуска снарядов в виде стрелочки
     private void LaunchProjectilesInLine()
     {
-        // Основное направление — вперед
+        projectileCount += player.CheckLuck(2,0);
         Vector3 mainDirection = transform.forward;
-        // Центральная позиция, с которой начнём расставлять снаряды в ряд
         Vector3 startPosition = transform.position;
-        // Вычисляем смещение для начала и конца ряда снарядов
         float totalWidth = (projectileCount - 1) * spacing;  // Полная ширина ряда
         float halfWidth = totalWidth / 2f;  // Половина ширины для смещения
 
@@ -64,10 +62,8 @@ public class MultishotAmmo : StandardAmmo
         Destroy(projectile, projectileLifetime);
     }
 
-    // Переопределяем метод OnCollisionEnter для сохранения логики столкновений
     private void OnCollisionEnter(Collision collision)
     {
-        // Вызываем базовую логику из StandardAmmo
         if (!isHit)
         {
             DamageManager.DealDamage(collision, damage);
@@ -77,4 +73,5 @@ public class MultishotAmmo : StandardAmmo
             isHit = true;
         }
     }
+
 }

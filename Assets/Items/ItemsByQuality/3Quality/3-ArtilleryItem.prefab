@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3919125457860424031
+--- !u!1 &2262646025462880071
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4011566398878271723}
-  - component: {fileID: 2089446800129147138}
+  - component: {fileID: 3469002912402253210}
+  - component: {fileID: 5008287292544623897}
   m_Layer: 3
   m_Name: DownLight
   m_TagString: Untagged
@@ -17,33 +17,33 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4011566398878271723
+--- !u!4 &3469002912402253210
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3919125457860424031}
+  m_GameObject: {fileID: 2262646025462880071}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -1.56, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8670187996279300337}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!108 &2089446800129147138
+--- !u!108 &5008287292544623897
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3919125457860424031}
+  m_GameObject: {fileID: 2262646025462880071}
   m_Enabled: 1
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.8886285, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.8117647, b: 0.20392157, a: 1}
   m_Intensity: 5
   m_Range: 7.5
   m_SpotAngle: 38.4
@@ -128,7 +128,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 4011566398878271723}
+  - {fileID: 3469002912402253210}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4763213450913310560
@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47a548548040b124fa18f6ce5d48a9ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  amount: 0
   itemIconSprite: {fileID: 21300000, guid: 78ce558579fa87342be197f09df550b1, type: 3}
   coinPickupSoundPrefab: {fileID: 7170229779030949701, guid: 3e27c5cf9462b7d43ba0cf556a0fa9ba, type: 3}
   damageChange: 0
@@ -180,10 +181,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90deed7c5f6a7b3499f01aca65ed9284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  amount: 0
   itemIconSprite: {fileID: 21300000, guid: eef34c6d53fb2a446a5c61ce4723b08c, type: 3}
   coinPickupSoundPrefab: {fileID: 7170229779030949701, guid: 00f827522672f0d4995e20a3906eee87, type: 3}
   projectilePrefab: {fileID: 3615019006484314583, guid: 9f27eee55dc7b3b48816ae08636be7bc, type: 3}
   isSecondary: 0
+  NonStatChange: 0
+  stackable: 0
 --- !u!23 &6056229544625622275
 MeshRenderer:
   m_ObjectHideFlags: 0

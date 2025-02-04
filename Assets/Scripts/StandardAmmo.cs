@@ -37,4 +37,5 @@ public class StandardAmmo : MonoBehaviour
             isHit = true;
         }
     }
+
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public abstract class StandardItem : MonoBehaviour
 {
+    public int amount;
     protected static TankController player;
     [SerializeField] private Sprite itemIconSprite;
     private Transform itemsPanel;
@@ -258,6 +259,8 @@ public abstract class StandardItem : MonoBehaviour
             Debug.LogWarning("DownLight not found in the item's hierarchy.");
         }
     }
-
-
+    public void Stack()
+    {
+        amount += amount;
+    }
 }

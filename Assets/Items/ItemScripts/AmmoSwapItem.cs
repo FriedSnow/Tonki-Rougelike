@@ -5,6 +5,7 @@ public class AmmoSwapItem : StandardItem
     public GameObject projectilePrefab;
     public bool isSecondary;
     public bool NonStatChange = false;
+    public bool stackable = false;
     private void Update()
     {
         if (NonStatChange)
@@ -24,6 +25,7 @@ public class AmmoSwapItem : StandardItem
             player.primaryBulletPrefab = projectilePrefab;
             AddAttackSprite(true);
         }
+        if (stackable) Stack();
     }
 }
 

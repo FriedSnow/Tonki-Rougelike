@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 public class TankController : MonoBehaviour
 {
     // ---------- ---------- STATS ---------- ----------
@@ -238,6 +239,20 @@ public class TankController : MonoBehaviour
     public void FullHealth()
     {
         health = maxHealth;
+    }
+    public int CheckLuck(int win, int lose)
+    {
+        // Генерируем случайное число от 0 до 100
+        int rnd = Random.Range(0, 101);
+
+        // Вычисляем шанс успеха как процент от player.luck
+        // Предполагается, что player.luck находится в диапазоне от 0 до 100
+        if (rnd < luck)
+        {
+            return win; // Успех! Возвращаем 2
+        }
+
+        return lose; // Неудача, возвращаем 0
     }
 
     private IEnumerator BecomeInvincible()

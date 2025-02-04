@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 3659093772454792862}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -1.56, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43,7 +43,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
   m_Intensity: 5
   m_Range: 7.5
   m_SpotAngle: 38.4
@@ -192,6 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47a548548040b124fa18f6ce5d48a9ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  amount: 0
   itemIconSprite: {fileID: 21300000, guid: 78ce558579fa87342be197f09df550b1, type: 3}
   coinPickupSoundPrefab: {fileID: 7170229779030949701, guid: 3e27c5cf9462b7d43ba0cf556a0fa9ba, type: 3}
   damageChange: 0
@@ -202,9 +203,12 @@ MonoBehaviour:
   luckChange: 0
   healthChange: 0
   armorChange: 0
+  coinsChange: 0
   message1: ...
+  color1Selection: 0
   color1: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
   message2: "\u0421\u043A\u043E\u0440\u043E\u0441\u0442\u044C -"
+  color2Selection: 0
   color2: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
 --- !u!65 &8587460561838421686
 BoxCollider:
