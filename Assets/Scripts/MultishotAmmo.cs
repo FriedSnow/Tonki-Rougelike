@@ -24,7 +24,7 @@ public class MultishotAmmo : StandardAmmo
     // Метод для выпуска снарядов в виде стрелочки
     private void LaunchProjectilesInLine()
     {
-        projectileCount += player.CheckLuck(2,0);
+        projectileCount += player.CheckLuck(2, 0);
         Vector3 mainDirection = transform.forward;
         Vector3 startPosition = transform.position;
         float totalWidth = (projectileCount - 1) * spacing;  // Полная ширина ряда
@@ -32,10 +32,15 @@ public class MultishotAmmo : StandardAmmo
 
         for (int i = 0; i < projectileCount; i++)
         {
-            // Вычисляем смещение по горизонтали
+            // Вычисляем смещение по горизонтали (оставляем как есть)
             float horizontalOffset = i * spacing - halfWidth;
-            // Вычисляем смещение назад в зависимости от расстояния до центра
-            float backwardOffset = Mathf.Abs(horizontalOffset) * backwardFactor;
+
+            // Вычисляем коэффициент, который определяет положение относительно центра
+            float positionFactor = Mathf.Abs(i - (projectileCount - 1) / 2);
+
+            // Вычисляем смещение назад с увеличивающимся шагом (например, квадратичное увеличение)
+            float backwardOffset = backwardFactor * positionFactor * positionFactor * 1.5f; // Квадратичное увеличение
+
             // Вычисляем финальную позицию спавна снаряда
             Vector3 spawnPosition = startPosition + transform.right * horizontalOffset - transform.forward * backwardOffset;
 

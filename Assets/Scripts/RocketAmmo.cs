@@ -17,17 +17,25 @@ public class RocketAmmo : StandardAmmo
     private void Update()
     {
         // Увеличиваем скорость ракеты
-        speed += acceleration + Time.deltaTime;
-        rb.velocity = transform.forward * speed; // Постоянно устанавливаем скорость вперед
+        speed += acceleration * Time.deltaTime;
+
+        // Используем MovePosition для более стабильного движения
+        rb.MovePosition(transform.position + transform.forward * speed * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!isHit)
+        if (!isHit && collision.collider.gameObject.layer != LayerMask.NameToLayer("IgnoreCollision"))
         {
-            DamageManager.DealDamage(collision, player.damage);
-            GameObject explosion = Instantiate(explosionPatricles, transform.position, transform.rotation);
-            Destroy(explosion, 5f);
+            if (player != null && explosionPatricles != null)
+            {
+                DamageManager.DealDamage(collision, player.damage);
+                GameObject explosion = Instantiate(explosionPatricles, transform.position, transform.rotation);
+                if (explosion != null)
+                {
+                    Destroy(explosion, 5f);
+                }
+            }
             Destroy(gameObject);
             isHit = true;
         }
