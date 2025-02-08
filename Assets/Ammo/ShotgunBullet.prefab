@@ -106,7 +106,7 @@ MonoBehaviour:
   fragmentSpeed: 75
   fragmentLifetime: 5
   offset: {x: 0, y: 0, z: 0}
-  detonationDelay: 0.25
+  detonationDistance: 30
   spreadAngle: 15
 --- !u!135 &5370622166440551417
 SphereCollider:
