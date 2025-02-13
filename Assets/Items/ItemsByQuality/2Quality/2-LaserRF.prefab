@@ -257,7 +257,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47a548548040b124fa18f6ce5d48a9ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 0
   itemIconSprite: {fileID: 21300000, guid: eef34c6d53fb2a446a5c61ce4723b08c, type: 3}
   coinPickupSoundPrefab: {fileID: 7170229779030949701, guid: 3e27c5cf9462b7d43ba0cf556a0fa9ba, type: 3}
   damageChange: 0
@@ -287,11 +286,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caf98460e95f1044b8a6ebd8273a17a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 0
   itemIconSprite: {fileID: 0}
   coinPickupSoundPrefab: {fileID: 0}
   itemPrefab: {fileID: 3631399604234298257, guid: c0400d049223e1a4b9639b9bb34feb12, type: 3}
-  spawnPosition: {x: 0.5, y: 2, z: 4}
+  spawnPosition: {x: 0.5, y: 2, z: 3.5}
 --- !u!23 &6056229544625622275
 MeshRenderer:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public abstract class StandardItem : MonoBehaviour
 {
-    public int amount;
+    // public int amount;
     protected static TankController player;
     [SerializeField] private Sprite itemIconSprite;
     private Transform itemsPanel;
@@ -251,7 +251,7 @@ public abstract class StandardItem : MonoBehaviour
         GameObject pointLight = transform.Find("DownLight")?.gameObject;
         if (pointLight != null)
         {
-            Debug.Log("DownLight found, turning off the light.");
+            // Debug.Log("DownLight found, turning off the light.");
             pointLight.SetActive(false);
         }
         else
@@ -259,8 +259,8 @@ public abstract class StandardItem : MonoBehaviour
             Debug.LogWarning("DownLight not found in the item's hierarchy.");
         }
     }
-    public void Stack()
-    {
-        amount += amount;
-    }
+    // public void Stack()
+    // {
+    //     amount += amount;
+    // }
 }

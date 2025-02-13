@@ -150,7 +150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47a548548040b124fa18f6ce5d48a9ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 0
   itemIconSprite: {fileID: 21300000, guid: 78ce558579fa87342be197f09df550b1, type: 3}
   coinPickupSoundPrefab: {fileID: 7170229779030949701, guid: 3e27c5cf9462b7d43ba0cf556a0fa9ba, type: 3}
   damageChange: 0
@@ -168,6 +167,8 @@ MonoBehaviour:
   message2: "\u0421\u043A\u043E\u0440\u043E\u0441\u0442\u044C +"
   color2Selection: 0
   color2: {r: 0.3137255, g: 0.9019608, b: 0.39215687, a: 1}
+  canBeMaxed: 1
+  maxAmount: 5
 --- !u!23 &6056229544625622275
 MeshRenderer:
   m_ObjectHideFlags: 0

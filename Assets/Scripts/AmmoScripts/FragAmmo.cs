@@ -17,6 +17,8 @@ public class FragmentingAmmo : StandardAmmo
 
     private void SpawnFragments()
     {
+        fragmentCount += player.CheckLuck(2, 0);
+        
         float angleStep = 360f / fragmentCount; // Угол между фрагментами
         Vector3 currentDirection = transform.forward; // Текущее направление снаряда
         float distance = 1.0f; // Расстояние от центра попадания до фрагмента

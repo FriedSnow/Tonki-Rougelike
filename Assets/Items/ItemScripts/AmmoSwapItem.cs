@@ -25,7 +25,7 @@ public class AmmoSwapItem : StandardItem
             player.primaryBulletPrefab = projectilePrefab;
             AddAttackSprite(true);
         }
-        if (stackable) Stack();
+        // if (stackable) Stack();
     }
 }
 

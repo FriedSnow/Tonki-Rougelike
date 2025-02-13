@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 public class TankController : MonoBehaviour
@@ -54,6 +55,9 @@ public class TankController : MonoBehaviour
     public float rotationSpeed = 10f;
     public float acceleration = 100f;
     public float turnSpeed = 150f;
+    [Header("Post Processing")]
+    public PostProcessVolume postProcessVolume; // Присвойте ссылку на PostProcessVolume
+    private ChromaticAberration chromaticAberration;
     // ---------- ---------- PRIVATE ---------- ---------- 
     private Rigidbody rb;
     private TextSlide textSlide;
@@ -75,6 +79,18 @@ public class TankController : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
         if (secondaryBulletPrefab == null) secondaryBulletPrefab = primaryBulletPrefab;
         EnableCursor();
+        // Автоматически ищем PostProcessVolume в сцене
+        postProcessVolume = FindObjectOfType<PostProcessVolume>();
+
+        if (postProcessVolume != null && postProcessVolume.profile.TryGetSettings(out ChromaticAberration ca))
+        {
+            chromaticAberration = ca;
+            chromaticAberration.active = true; // Убедимся, что эффект активен
+        }
+        else
+        {
+            Debug.LogWarning("PostProcessVolume с эффектом Chromatic Aberration не найден!");
+        }
     }
 
     // Update is called once per frame
@@ -208,12 +224,48 @@ public class TankController : MonoBehaviour
             // Активируем неуязвимость после удара
             StartCoroutine(BecomeInvincible());
 
+            // *** Применяем эффект хроматической аберрации ***
+            if (chromaticAberration != null)
+            {
+                StartCoroutine(ApplyChromaticAberrationEffect());
+            }
+
             // Активируем все эффекты
             foreach (var effect in OnHitEffects)
             {
-                effect.ApplyEffect(this);
+                ((IOnHitEffect)effect).ApplyEffect(this);
             }
         }
+    }
+
+    // Корутина для применения эффекта хроматической аберрации
+    private IEnumerator ApplyChromaticAberrationEffect()
+    {
+        float duration = 0.25f; // Время изменения
+        float halfDuration = duration / 2;
+
+        // Сохраняем исходное значение интенсивности
+        float originalIntensity = chromaticAberration.intensity.value;
+
+        // Плавно увеличиваем интенсивность до 1
+        for (float t = 0f; t < halfDuration; t += Time.deltaTime)
+        {
+            chromaticAberration.intensity.value = Mathf.Lerp(originalIntensity, .25f, t / halfDuration);
+            yield return null;
+        }
+
+        // Максимальная интенсивность
+        chromaticAberration.intensity.value = .25f;
+
+        // Плавно уменьшаем интенсивность обратно до исходного значения
+        for (float t = 0f; t < halfDuration; t += Time.deltaTime)
+        {
+            chromaticAberration.intensity.value = Mathf.Lerp(.25f, originalIntensity, t / halfDuration);
+            yield return null;
+        }
+
+        // Возвращаем к исходному значению
+        chromaticAberration.intensity.value = originalIntensity;
     }
     public void Heal(int amount)
     {
