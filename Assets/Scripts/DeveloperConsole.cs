@@ -11,6 +11,7 @@ public class DeveloperConsole : StandardItem
     private string inputBuffer = "";
     void Awake()
     {
+        GetPlayer();
         if (instance == null)
         {
             instance = this;
@@ -39,6 +40,7 @@ public class DeveloperConsole : StandardItem
                 Debug.LogError("TextSlide not found!");
             }
         }
+        GetPlayer();
     }
 
     void Update()
@@ -60,7 +62,7 @@ public class DeveloperConsole : StandardItem
         }
     }
 
-    void OnGUI() 
+    void OnGUI()
     {
         if (!isActive) return;
 
@@ -87,11 +89,10 @@ public class DeveloperConsole : StandardItem
             case "spawn":
                 SpawnPrefab(args);
                 break;
-            case "goida":
-                textSlide.ShowItemName("ГОЙДА!", Color.red, "ГОООООООООООООООООЛ");
-                break;
-            case "hohly":
-                textSlide.ShowItemName("хохлы?", Color.cyan, "бомбить!", Color.red);
+            case "debug":
+                player.coins += 10;
+                player.Heal(10);
+                player.AddArmor(10);
                 break;
             default:
                 Debug.Log($"Unknown command: {commandName}");

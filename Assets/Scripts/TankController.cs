@@ -40,6 +40,7 @@ public class TankController : MonoBehaviour
     public Texture2D cursorTexture;
     public Transform turret;
     public Transform firePoint;
+    public Transform[] firePoints;
     public GameObject hitSoundPrefab;
     public GameObject hitPartsPrefab;
     public GameObject shootParticlesPrefab;
@@ -138,24 +139,65 @@ public class TankController : MonoBehaviour
     {
         float leftTrigger = Input.GetAxis("LeftTrigger");
         float rightTrigger = Input.GetAxis("RightTrigger");
-        // Изменяем нажатие кнопки A для стрельбы
-        if ((Input.GetButton("Fire1") || rightTrigger > 0.1f || leftTrigger > .1f) && Time.time >= nextFireTime) // Fire1 по умолчанию соответствует кнопке A на Xbox
+
+        // Проверяем, нажата ли кнопка для стрельбы и прошло ли достаточно времени с последнего выстрела
+        if ((Input.GetButton("Fire1") || rightTrigger > 0.1f || leftTrigger > 0.1f) && Time.time >= nextFireTime)
         {
-            GameObject bullet = Instantiate(primaryBulletPrefab, firePoint.position, firePoint.rotation);
-
-            Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            rb.velocity = firePoint.forward * projectileSpeed;
-
-            StandardAmmo ammo = bullet.GetComponent<StandardAmmo>();
-            if (ammo != null)
+            // Если firePoints содержит элементы, используем их для стрельбы
+            if (firePoints != null && firePoints.Length > 0)
             {
-                ammo.damage = damage;
+                foreach (Transform firePoint in firePoints)
+                {
+                    // Создаем пулю в каждой точке стрельбы
+                    GameObject bullet = Instantiate(primaryBulletPrefab, firePoint.position, firePoint.rotation);
+                    Rigidbody rb = bullet.GetComponent<Rigidbody>();
+                    if (rb != null)
+                    {
+                        rb.velocity = firePoint.forward * projectileSpeed;
+                    }
+
+                    // Настройка урона для пули
+                    StandardAmmo ammo = bullet.GetComponent<StandardAmmo>();
+                    if (ammo != null)
+                    {
+                        ammo.damage = damage;
+                    }
+
+                    // Создание частиц при стрельбе
+                    if (shootParticlesPrefab != null)
+                    {
+                        GameObject shootParticles = Instantiate(shootParticlesPrefab, firePoint.position, firePoint.rotation);
+                        Destroy(shootParticles, 2f); // Уничтожаем частицы через 2 секунды
+                    }
+                }
             }
-            if (shootParticlesPrefab != null)
+            // Если firePoints пустой или null, используем firePoint для стрельбы
+            else if (firePoint != null)
             {
-                GameObject shootParticles = Instantiate(shootParticlesPrefab, firePoint.position, firePoint.rotation);
-                Destroy(shootParticles, 2f);
+                // Создаем пулю в точке firePoint
+                GameObject bullet = Instantiate(primaryBulletPrefab, firePoint.position, firePoint.rotation);
+                Rigidbody rb = bullet.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.velocity = firePoint.forward * projectileSpeed;
+                }
+
+                // Настройка урона для пули
+                StandardAmmo ammo = bullet.GetComponent<StandardAmmo>();
+                if (ammo != null)
+                {
+                    ammo.damage = damage;
+                }
+
+                // Создание частиц при стрельбе
+                if (shootParticlesPrefab != null)
+                {
+                    GameObject shootParticles = Instantiate(shootParticlesPrefab, firePoint.position, firePoint.rotation);
+                    Destroy(shootParticles, 2f); // Уничтожаем частицы через 2 секунды
+                }
             }
+
+            // Обновляем время следующего выстрела
             nextFireTime = Time.time + fireRate;
         }
     }

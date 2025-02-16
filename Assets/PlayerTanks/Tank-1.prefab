@@ -197,6 +197,7 @@ MonoBehaviour:
   rotationSpeed: 10
   acceleration: 100
   turnSpeed: 150
+  postProcessVolume: {fileID: 0}
 --- !u!54 &4375498837248161539
 Rigidbody:
   m_ObjectHideFlags: 0
