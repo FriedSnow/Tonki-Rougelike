@@ -138,6 +138,7 @@ public class EnemyController : MonoBehaviour
 
     void Die()
     {
+        TankDamage.SpawnHitParticles(hitPartsPrefab, transform, enemyType == EnemyType.regular ? 15 : 50, 50);
         if (enemyType == EnemyType.firstBoss && bossHealth != null)
         {
             bossHealth.HideHealthBar();

@@ -20,7 +20,7 @@ TagManager:
   - PlayerEntity
   - Shield
   - Bullet
-  - 
+  - IgnoreLight
   - 
   - 
   - 

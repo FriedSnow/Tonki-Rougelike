@@ -51,7 +51,7 @@ public class TankController : MonoBehaviour
     public TMP_Text luckText;
     public TMP_Text projectileSpeedText;
     public TMP_Text armorText;
-    public TMP_Text damageText;
+    public TMP_Text damageText; 
     public float invincibilityDuration = .5f; // длительность неуязвимости (1 секунда)
     public float rotationSpeed = 10f;
     public float acceleration = 100f;
@@ -60,7 +60,7 @@ public class TankController : MonoBehaviour
     public PostProcessVolume postProcessVolume; // Присвойте ссылку на PostProcessVolume
     private ChromaticAberration chromaticAberration;
     // ---------- ---------- PRIVATE ---------- ---------- 
-    private Rigidbody rb;
+    private Rigidbody trb;
     private TextSlide textSlide;
     private HealthManager healthManager;
     private float currentSpeed = 0;
@@ -73,11 +73,11 @@ public class TankController : MonoBehaviour
     {
         healthManager = FindObjectOfType<HealthManager>();
         textSlide = FindObjectOfType<TextSlide>();
-        rb = GetComponent<Rigidbody>();
+        trb = GetComponent<Rigidbody>();
         baseBulletPrefab = primaryBulletPrefab;
         baseDamage = damage;
         GetUI();
-        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        trb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
         if (secondaryBulletPrefab == null) secondaryBulletPrefab = primaryBulletPrefab;
         EnableCursor();
         // Автоматически ищем PostProcessVolume в сцене
@@ -92,6 +92,7 @@ public class TankController : MonoBehaviour
         {
             Debug.LogWarning("PostProcessVolume с эффектом Chromatic Aberration не найден!");
         }
+
     }
 
     // Update is called once per frame
@@ -169,6 +170,7 @@ public class TankController : MonoBehaviour
                         GameObject shootParticles = Instantiate(shootParticlesPrefab, firePoint.position, firePoint.rotation);
                         Destroy(shootParticles, 2f); // Уничтожаем частицы через 2 секунды
                     }
+                    // trb.AddForce(-firePoint.forward * 10000, ForceMode.Impulse);
                 }
             }
             // Если firePoints пустой или null, используем firePoint для стрельбы
@@ -234,12 +236,12 @@ public class TankController : MonoBehaviour
         }
 
         Vector3 moveDirection = transform.forward * currentSpeed;
-        rb.velocity = new Vector3(moveDirection.x, rb.velocity.y, moveDirection.z);
+        trb.velocity = new Vector3(moveDirection.x, trb.velocity.y, moveDirection.z);
 
         if (moveX != 0)
         {
             float turn = moveX * turnSpeed * Time.deltaTime;
-            rb.MoveRotation(rb.rotation * Quaternion.Euler(0, turn, 0));
+            trb.MoveRotation(trb.rotation * Quaternion.Euler(0, turn, 0));
         }
     }
     public void TakeDamage(int damage)

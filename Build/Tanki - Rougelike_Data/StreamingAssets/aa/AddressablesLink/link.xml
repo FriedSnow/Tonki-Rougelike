@@ -22,6 +22,7 @@
     <type fullname="ShieldItem" preserve="all" />
     <type fullname="ShopItem" preserve="all" />
     <type fullname="ShotgunAmmo" preserve="all" />
+    <type fullname="ShrinkObject" preserve="all" />
     <type fullname="StandardAmmo" preserve="all" />
     <type fullname="StatChangeItem" preserve="all" />
     <type fullname="TeslaAmmo" preserve="all" />

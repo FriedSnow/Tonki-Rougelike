@@ -304,7 +304,7 @@ MonoBehaviour:
   teleportPrefab: {fileID: 3794949509022366818, guid: 280fa0eda5795a647a6686022cdc438d, type: 3}
   shootParticlesPrefab: {fileID: 7791147837522376933, guid: c7c43dc109fb9bc4fb12f2cb63e3d11c, type: 3}
   destroyParticlesPrefab: {fileID: 936619495174496986, guid: 1998cf48aa1ff8f4799e581e48461068, type: 3}
-  hitPartsPrefab: {fileID: 0}
+  hitPartsPrefab: {fileID: 2142074571973920163, guid: 9e517d90e26289e42abbabc77102978c, type: 3}
   firePoint: {fileID: 7752196787774966830}
   turretRotationSpeed: 100
   moveSpeed: 10
