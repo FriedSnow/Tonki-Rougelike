@@ -21,10 +21,10 @@ TagManager:
   - Shield
   - Bullet
   - IgnoreLight
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - PlayerBullet
+  - Enemy
+  - EnemyBullet
   - 
   - 
   - 

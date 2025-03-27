@@ -65,6 +65,7 @@ class ArtilleryMarkerAmmo : MonoBehaviour
 
             // Create projectile with downward orientation
             GameObject circularProjectile = Instantiate(projectile, circularSpawnPosition, downwardRotation);
+            circularProjectile.layer = 12;
             Rigidbody circularRb = circularProjectile.GetComponent<Rigidbody>();
 
             // Set speed for the projectile

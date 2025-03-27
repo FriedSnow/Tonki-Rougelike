@@ -54,7 +54,7 @@ public class MultishotAmmo : StandardAmmo
         projectilePrefab = player.secondaryBulletPrefab;
         // Создаем снаряд
         GameObject projectile = Instantiate(projectilePrefab, position, Quaternion.LookRotation(direction));
-        projectile.layer = 6;
+        projectile.layer = 12;
 
         // Устанавливаем направление и скорость
         Rigidbody rb = projectile.GetComponent<Rigidbody>();

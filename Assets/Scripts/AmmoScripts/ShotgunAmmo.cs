@@ -42,7 +42,7 @@ public class ShotgunAmmo : StandardAmmo
         {
             // Создаём фрагмент
             GameObject fragment = Instantiate(fragmentPrefab, transform.position, Quaternion.identity);
-            fragment.layer = 6; // Присваиваем фрагменту нужный слой
+            fragment.layer = 12; // Присваиваем фрагменту нужный слой
             // Рассчитываем случайный угол отклонения для фрагмента
             float randomSpreadX = Random.Range(-spreadAngle, spreadAngle);
             float randomSpreadY = Random.Range(-spreadAngle, spreadAngle);

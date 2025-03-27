@@ -51,7 +51,7 @@ public class TankController : MonoBehaviour
     public TMP_Text luckText;
     public TMP_Text projectileSpeedText;
     public TMP_Text armorText;
-    public TMP_Text damageText; 
+    public TMP_Text damageText;
     public float invincibilityDuration = .5f; // длительность неуязвимости (1 секунда)
     public float rotationSpeed = 10f;
     public float acceleration = 100f;
@@ -151,6 +151,7 @@ public class TankController : MonoBehaviour
                 {
                     // Создаем пулю в каждой точке стрельбы
                     GameObject bullet = Instantiate(primaryBulletPrefab, firePoint.position, firePoint.rotation);
+                    bullet.layer = 12; //PlayerBullet
                     Rigidbody rb = bullet.GetComponent<Rigidbody>();
                     if (rb != null)
                     {
@@ -246,9 +247,12 @@ public class TankController : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
-        // Проверяем неуязвимость и состояние объекта
+        int _damage = PlayerPrefs.GetInt("MonkeyModeEnabled", 0) == 1 ? 1 : damage;
+        damage = _damage;
+        // Проверяем неуязвимость и состояние объекта 
         if (!isDestroyed && !isInvincible)
         {
+            // damage *= damageMultiplier;
             if (armor > 0)
                 armor -= damage;
             else

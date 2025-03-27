@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7098362041341112245}
   - component: {fileID: 708414919216181732}
   - component: {fileID: 7787172090495561906}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: Hull (4)
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 84747608205265198}
   - component: {fileID: 4375498837248161539}
   - component: {fileID: 1405890772490540096}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: EnemyTank
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7752196787774966830}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 7936262114535745008}
   - component: {fileID: 776568517010132276}
   - component: {fileID: 6688300559914063651}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: Hull (5)
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 8709356287820379760}
   - component: {fileID: 4510968759520701753}
   - component: {fileID: 6817688655334972576}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: Hull (2)
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -415,7 +415,7 @@ GameObject:
   - component: {fileID: 1541721663437351844}
   - component: {fileID: 2141916440760836087}
   - component: {fileID: 3537935570726793252}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: Hull
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -498,7 +498,7 @@ GameObject:
   - component: {fileID: 6278145109625925842}
   - component: {fileID: 7263998418352618422}
   - component: {fileID: 7638459141325861612}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -581,7 +581,7 @@ GameObject:
   - component: {fileID: 7977448062184280818}
   - component: {fileID: 5188197761656532749}
   - component: {fileID: 162633012330824612}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -664,7 +664,7 @@ GameObject:
   - component: {fileID: 7147099922057566782}
   - component: {fileID: 5611543266767167003}
   - component: {fileID: 3321451134557086370}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: Hull (1)
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -747,7 +747,7 @@ GameObject:
   - component: {fileID: 8033448185689162115}
   - component: {fileID: 6996961538249917613}
   - component: {fileID: 1825871679501305966}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: Hull (3)
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -828,7 +828,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5679675699381923137}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Pz-turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -860,7 +860,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3180148892295997893}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -948,9 +948,17 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -8239504418204824245, guid: 3208e2368732dc64e8a9a93b12fa66bf, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3208e2368732dc64e8a9a93b12fa66bf, type: 3}
       propertyPath: m_Name
       value: Panzer-turret
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3208e2368732dc64e8a9a93b12fa66bf, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 2371368719017856881, guid: 3208e2368732dc64e8a9a93b12fa66bf, type: 3}
       propertyPath: m_LocalPosition.x

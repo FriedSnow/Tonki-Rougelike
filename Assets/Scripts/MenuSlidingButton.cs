@@ -13,6 +13,7 @@ public class MenuSlidingButton : MonoBehaviour
     {
         start,
         choose,
+        settings,
         exit
     }
     public ButtonType buttonType;
@@ -58,6 +59,10 @@ public class MenuSlidingButton : MonoBehaviour
 
             case ButtonType.choose:
                 SceneManager.LoadScene("ChooseScene");
+                break;
+            
+            case ButtonType.settings:
+                SceneManager.LoadScene("SettingsScene");
                 break;
 
             case ButtonType.exit:

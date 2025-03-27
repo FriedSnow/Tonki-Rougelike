@@ -109,6 +109,7 @@ public class EnemyController : MonoBehaviour
         if (Time.time >= nextFireTime)
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            bullet.layer = 14; //EnemyBullet
             Rigidbody rbBullet = bullet.GetComponent<Rigidbody>();
             rbBullet.velocity = firePoint.forward * projectileSpeed;
             if (shootParticlesPrefab != null)

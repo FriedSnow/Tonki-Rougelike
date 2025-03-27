@@ -34,6 +34,7 @@ Transform:
   - {fileID: 7194007638731648493}
   - {fileID: 4730056976374109609}
   - {fileID: 5607798679158477867}
+  - {fileID: 564030143303014672}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &153603371233637277
@@ -294,7 +295,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7194007638731648493
 Transform:
   m_ObjectHideFlags: 0
@@ -5121,3 +5122,87 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1001 &7479395539614905497
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5857197886921035501}
+    m_Modifications:
+    - target: {fileID: 3169956503278327296, guid: 48f7bc86d8787f2478ba1585f4e72f3d, type: 3}
+      propertyPath: m_Name
+      value: Tracer 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6926519669517151625, guid: 48f7bc86d8787f2478ba1585f4e72f3d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6926519669517151625, guid: 48f7bc86d8787f2478ba1585f4e72f3d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6926519669517151625, guid: 48f7bc86d8787f2478ba1585f4e72f3d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6926519669517151625, guid: 48f7bc86d8787f2478ba1585f4e72f3d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6926519669517151625, guid: 48f7bc86d8787f2478ba1585f4e72f3d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6926519669517151625, guid: 48f7bc86d8787f2478ba1585f4e72f3d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6926519669517151625, guid: 48f7bc86d8787f2478ba1585f4e72f3d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6926519669517151625, guid: 48f7bc86d8787f2478ba1585f4e72f3d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6926519669517151625, guid: 48f7bc86d8787f2478ba1585f4e72f3d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6926519669517151625, guid: 48f7bc86d8787f2478ba1585f4e72f3d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3169956503278327296, guid: 48f7bc86d8787f2478ba1585f4e72f3d, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 4386885571775391540}
+  m_SourcePrefab: {fileID: 100100000, guid: 48f7bc86d8787f2478ba1585f4e72f3d, type: 3}
+--- !u!4 &564030143303014672 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6926519669517151625, guid: 48f7bc86d8787f2478ba1585f4e72f3d, type: 3}
+  m_PrefabInstance: {fileID: 7479395539614905497}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5490402760446386841 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3169956503278327296, guid: 48f7bc86d8787f2478ba1585f4e72f3d, type: 3}
+  m_PrefabInstance: {fileID: 7479395539614905497}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4386885571775391540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5490402760446386841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97ee8206c192a8f4ca67b22dfed85d3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetObject: {fileID: 564030143303014672}
+  shrinkDuration: 3

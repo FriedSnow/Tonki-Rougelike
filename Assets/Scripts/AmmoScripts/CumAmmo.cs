@@ -24,7 +24,7 @@ public class CumulativeAmmo : StandardAmmo
 
         GameObject fragment = Instantiate(fragmentPrefab, spawnPosition, transform.rotation);
         Debug.Log($"Фрагмент создан: {fragment != null}");
-        fragment.layer = 6;
+        fragment.layer = 12;
 
         Rigidbody fragmentRb = fragment.GetComponent<Rigidbody>();
         if (fragmentRb != null)

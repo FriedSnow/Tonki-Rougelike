@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8250995833827745548}
   - component: {fileID: 5370622166440551417}
   - component: {fileID: 9123413191987786115}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: ArtilleryMarkerAmmo
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -163,9 +163,17 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f3d88bdfecd279a49bd214a3d2e427e0, type: 2}
+    - target: {fileID: 1169139311812366638, guid: 7f4510a4a19a1ab499872bb4bb8d3a92, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 3169956503278327296, guid: 7f4510a4a19a1ab499872bb4bb8d3a92, type: 3}
       propertyPath: m_Name
       value: Tracer
+      objectReference: {fileID: 0}
+    - target: {fileID: 3169956503278327296, guid: 7f4510a4a19a1ab499872bb4bb8d3a92, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6926519669517151625, guid: 7f4510a4a19a1ab499872bb4bb8d3a92, type: 3}
       propertyPath: m_LocalPosition.x

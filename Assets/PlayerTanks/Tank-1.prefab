@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 696310398879161080}
   - component: {fileID: 7839794397131679269}
   - component: {fileID: 6817168515399597588}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 7742308964475655018}
   - component: {fileID: 4375498837248161539}
   - component: {fileID: 4273681469549053194}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Tank-1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -182,6 +182,7 @@ MonoBehaviour:
   cursorTexture: {fileID: 2800000, guid: 3af752dbd3f525a43a6bb27eb86030de, type: 3}
   turret: {fileID: 3180148892295997893}
   firePoint: {fileID: 7752196787774966830}
+  firePoints: []
   hitSoundPrefab: {fileID: 2482273922620688192, guid: 8856f70b52d7a5a4a89e65fdbfbac865, type: 3}
   hitPartsPrefab: {fileID: 7284930866212523255, guid: bc77350350b229b4ba4e68263775c655, type: 3}
   shootParticlesPrefab: {fileID: 7791147837522376933, guid: c7c43dc109fb9bc4fb12f2cb63e3d11c, type: 3}
@@ -244,8 +245,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 7.4999995, y: 5.5574675, z: 15.079999}
-  m_Center: {x: 0, y: 1.5467869, z: 0}
+  m_Size: {x: 7.4999995, y: 6.7499437, z: 15.079999}
+  m_Center: {x: 0, y: 0.95054567, z: 0}
 --- !u!1 &2262468379462769903
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +256,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7752196787774966830}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,7 +272,7 @@ Transform:
   m_GameObject: {fileID: 2262468379462769903}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.13, z: 16.13}
+  m_LocalPosition: {x: 0, y: 1.02, z: 16.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -289,7 +290,7 @@ GameObject:
   - component: {fileID: 2141916440760836087}
   - component: {fileID: 3537935570726793252}
   - component: {fileID: 8243352352329518358}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Hull
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -394,7 +395,7 @@ GameObject:
   - component: {fileID: 7250542066836877051}
   - component: {fileID: 39426207079029430}
   - component: {fileID: 4001120128062194931}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -501,7 +502,7 @@ GameObject:
   - component: {fileID: 3437524510787507108}
   - component: {fileID: 2969558126807107211}
   - component: {fileID: 241940882651743503}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -608,7 +609,7 @@ GameObject:
   - component: {fileID: 2188433143500386782}
   - component: {fileID: 3615659234783119571}
   - component: {fileID: 4012328353406969483}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Cylinder (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -715,7 +716,7 @@ GameObject:
   - component: {fileID: 4023811304397732313}
   - component: {fileID: 5224517306121943542}
   - component: {fileID: 2739376846078939282}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -822,7 +823,7 @@ GameObject:
   - component: {fileID: 6449233895824810594}
   - component: {fileID: 8337828807092601088}
   - component: {fileID: 1107300189553561820}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Cylinder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -926,7 +927,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3180148892295997893}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1016,6 +1017,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tracks
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 014c8c7c173c08a47b2e19d2ccdeca88, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1090,6 +1095,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hull (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d96b79a93d1cf264ea503abdcd9d5e5c, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1163,6 +1172,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 485610d270ec8214b8706adb084d1c5c, type: 3}
       propertyPath: m_Name
       value: Turret (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 485610d270ec8214b8706adb084d1c5c, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 485610d270ec8214b8706adb084d1c5c, type: 3}
       propertyPath: m_IsActive
