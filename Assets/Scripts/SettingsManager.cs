@@ -40,8 +40,8 @@ public class SettingsManager : MonoBehaviour
         if (volumeSlider != null)
         {
             float savedVolume = PlayerPrefs.GetFloat("Volume", 0.5f); // Значение по умолчанию: 0.5
-            volumeSlider.value = savedVolume;
             AudioListener.volume = savedVolume;
+            volumeSlider.value = savedVolume;
             volumeValueText.text = "Volume: " + Mathf.Round(savedVolume * 100) / 100f;
         }
 
