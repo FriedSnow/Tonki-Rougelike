@@ -6,7 +6,6 @@ using UnityEngine.Video;
 
 public class SceneKostylb : MonoBehaviour
 {
-    //qwa
     public VideoPlayer vp;
     void Awake()
     {
