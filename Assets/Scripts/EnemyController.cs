@@ -44,19 +44,38 @@ public class EnemyController : MonoBehaviour
         // Начальное значение целевого поворота корпуса
         targetRotationBody = transform.rotation;
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-        if (enemyType == EnemyType.firstBoss)
+        if (bossHealth != null)
         {
-            if (bossHealth != null)
+            switch (enemyType)
             {
-                bossHealth.ShowHealthBar(health, "Maus");
+                case EnemyType.firstBoss:
+                    bossHealth.ShowHealthBar(health, "Maus");
+                    moveSpeed *= .25f;
+                    bodyRotationSpeed *= .25f;
+                    fireRate *= 2;
+                    turretRotationSpeed *= .5f;
+                    decisionTime *= 3;
+                    projectileSpeed *= 1.5f;
+                    textSlide.ShowItemName("Maus", 3f, "Холодильник");
+                    break;
+
+                case EnemyType.secondBoss:
+                    bossHealth.ShowHealthBar(health, "2");
+                    moveSpeed *= .25f;
+                    bodyRotationSpeed *= .25f;
+                    turretRotationSpeed *= .5f;
+                    decisionTime *= 3;
+                    projectileSpeed *= 1.5f;
+                    textSlide.ShowItemName("второй чел", 3f, "второй");
+                    break;
+
+                case EnemyType.thirdBoss:
+                    bossHealth.ShowHealthBar(health, "3");
+                    decisionTime *= 3;
+                    projectileSpeed *= 1.5f;
+                    textSlide.ShowItemName("третий чел", 3f, "опасный я хз");
+                    break;
             }
-            moveSpeed *= .25f;
-            bodyRotationSpeed *= .25f;
-            fireRate *= 2;
-            turretRotationSpeed *= .5f;
-            decisionTime *= 3;
-            projectileSpeed *= 1.5f;
-            textSlide.ShowItemName("Maus", 3f, "Холодильник");
         }
         transform.rotation = Quaternion.Euler(transform.rotation.x, Random.Range(0, 5) * 90f, transform.rotation.z);
     }
@@ -124,7 +143,7 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
-        if (enemyType == EnemyType.firstBoss && bossHealth != null)
+        if (enemyType != EnemyType.regular && bossHealth != null)
         {
             bossHealth.UpdateHealthBar(health);
         }
@@ -140,9 +159,15 @@ public class EnemyController : MonoBehaviour
     void Die()
     {
         TankDamage.SpawnHitParticles(hitPartsPrefab, transform, enemyType == EnemyType.regular ? 15 : 50, 50);
-        if (enemyType == EnemyType.firstBoss && bossHealth != null)
+        if (enemyType != EnemyType.regular && bossHealth != null)
         {
+            Instantiate(teleportPrefab, transform.position, Quaternion.identity);
             bossHealth.HideHealthBar();
+            Progression.IncrementProgression(0);
+        }
+        if (enemyType == EnemyType.regular)
+        {
+            Progression.IncrementProgression(1);
         }
         // Debug.Log("ПОМЕР но не я");
         if (destroyParticlesPrefab != null)
@@ -158,13 +183,11 @@ public class EnemyController : MonoBehaviour
 
         if (enemyType == EnemyType.firstBoss)
         {
-            Instantiate(teleportPrefab, transform.position, Quaternion.identity);
             if (PlayerPrefs.GetInt("Unlockable4") == 0)
             {
                 PlayerPrefs.SetInt("Unlockable4", 1);
                 textSlide.ShowItemName("Достижение получено", Color.cyan);
             }
-            Progression.IncrementProgression(0);
         }
     }
 

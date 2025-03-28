@@ -9,6 +9,7 @@ public class FloorSwitcher : MonoBehaviour
     public GameObject shopRoomPrefab; // Префаб комнаты-магазина
     public GameObject itemRoomPrefab; // Префаб комнаты с предметом
     public GameObject bossRoomPrefab; // Префаб комнаты с боссом
+    public bool isEnd = false;
     private TankController player; // Ссылка на игрока
     private Rigidbody playerRb; // Ссылка на Rigidbody игрока
     private float moveDuration = .5f; // Длительность перемещения

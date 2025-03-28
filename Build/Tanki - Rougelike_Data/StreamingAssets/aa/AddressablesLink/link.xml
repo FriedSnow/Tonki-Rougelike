@@ -20,7 +20,6 @@
     <type fullname="RoomManager" preserve="all" />
     <type fullname="RoomTrigger" preserve="all" />
     <type fullname="ShieldItem" preserve="all" />
-    <type fullname="ShopItem" preserve="all" />
     <type fullname="ShotgunAmmo" preserve="all" />
     <type fullname="ShrinkObject" preserve="all" />
     <type fullname="StandardAmmo" preserve="all" />

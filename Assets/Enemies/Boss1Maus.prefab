@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 4375498837248161539}
   - component: {fileID: 1405890772490540096}
   m_Layer: 13
-  m_Name: BossMaus
+  m_Name: Boss1Maus
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
