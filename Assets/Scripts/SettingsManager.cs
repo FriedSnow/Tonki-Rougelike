@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class SettingsManager : MonoBehaviour
 {
-    public Slider volumeSlider; // Ссылка на слайдер громкости
-    public TMP_Text volumeValueText; // Ссылка на текст для отображения значения
-    public Toggle monkeyModeToggle; // Ссылка на чекбокс
+    public Slider volumeSlider;
+    public TMP_Text volumeValueText;
+    public Toggle monkeyModeToggle;
+    public Toggle cameraAngleToggle;
+    public Toggle perspectiveToggle;
 
     private void Start()
     {
@@ -30,6 +32,8 @@ public class SettingsManager : MonoBehaviour
         // Сохранение настроек
         PlayerPrefs.SetFloat("Volume", volumeSlider.value);
         PlayerPrefs.SetInt("MonkeyModeEnabled", monkeyModeToggle.isOn ? 1 : 0);
+        PlayerPrefs.SetInt("AngleCameraEnabled", cameraAngleToggle.isOn ? 1 : 0);
+        PlayerPrefs.SetInt("PerspectiveEnabled", perspectiveToggle.isOn ? 1 : 0);
         PlayerPrefs.Save();
         SceneManager.LoadScene("MainMenu");
     }
@@ -49,6 +53,16 @@ public class SettingsManager : MonoBehaviour
         {
             bool isExtraFeatureEnabled = PlayerPrefs.GetInt("MonkeyModeEnabled", 0) == 1;
             monkeyModeToggle.isOn = isExtraFeatureEnabled;
+        }
+        if (cameraAngleToggle != null)
+        {
+            bool isAngleCameraEnabled = PlayerPrefs.GetInt("AngleCameraEnabled", 0) == 1;
+            cameraAngleToggle.isOn = isAngleCameraEnabled;
+        }
+        if (perspectiveToggle != null)
+        {
+            bool isPerspectiveEnabled = PlayerPrefs.GetInt("PerspectiveEnabled", 1) == 1;
+            perspectiveToggle.isOn = isPerspectiveEnabled;
         }
     }
 }

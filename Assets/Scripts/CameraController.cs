@@ -9,13 +9,20 @@ public class CameraController : MonoBehaviour
     {
         // Найдем основную камеру на сцене
         mainCamera = Camera.main;
+        if (PlayerPrefs.GetInt("AngleCameraEnabled", 0) == 1)
+        {
+            mainCamera.transform.rotation = Quaternion.Euler(90, 0, 0);
+            mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, 0);
+        }
     }
 
     // Метод для перемещения камеры в центр комнаты
     public void MoveCameraToRoom(Vector3 roomCenter)
     {
         // Оставляем текущую высоту и глубину камеры, двигаем только по горизонтали (по оси x и z)
-        Vector3 targetPosition = new Vector3(roomCenter.x, mainCamera.transform.position.y, roomCenter.z);
+        Vector3 targetPosition = new Vector3(roomCenter.x,
+        mainCamera.transform.position.y,
+        roomCenter.z + (PlayerPrefs.GetInt("AngleCameraEnabled", 0) == 1 ? 18 : 0));
 
         // Запускаем Coroutine для плавного перемещения камеры
         StartCoroutine(MoveCameraSmoothly(targetPosition));
