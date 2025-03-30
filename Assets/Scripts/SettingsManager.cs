@@ -13,13 +13,11 @@ public class SettingsManager : MonoBehaviour
 
     private void Start()
     {
-        // Загрузка сохраненных настроек при старте
         LoadSettings();
     }
 
     private void Update()
     {
-        // Обновление значения громкости в реальном времени
         if (volumeSlider != null)
         {
             AudioListener.volume = volumeSlider.value;
