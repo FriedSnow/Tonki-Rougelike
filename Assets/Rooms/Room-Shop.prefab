@@ -3559,7 +3559,7 @@ GameObject:
   - component: {fileID: 8861895889597506066}
   m_Layer: 0
   m_Name: Room-Shop
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3729,6 +3729,7 @@ MonoBehaviour:
   - {fileID: 7256513690655716288}
   closeSoundPrefab: {fileID: 7170229779030949701, guid: 15e0c3c719da76943b0fd00dbdbdfdd4, type: 3}
   openSoundPrefab: {fileID: 7170229779030949701, guid: a6d7547406e79aa4c9c1626516032349, type: 3}
+  flagPrefab: {fileID: 0}
   isCleared: 0
   isShop: 1
   doorCloseDelay: 0.5

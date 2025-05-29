@@ -90,7 +90,7 @@ public class TankController : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("PostProcessVolume с эффектом Chromatic Aberration не найден!");
+            UnityEngine.Debug.LogWarning("PostProcessVolume с эффектом Chromatic Aberration не найден!");
         }
 
     }
@@ -98,13 +98,13 @@ public class TankController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        KekW();
+        Debug();
         CheckGamepadConnection();
         if (!isDestroyed)
         {
             Move();
-            Aim(); // Оставляем вызов Aim
-            Shoot(damage); // Оставляем вызов Shoot
+            Aim(); 
+            Shoot(damage);
         }
         CheckUnlockForCoins();
         UpdateUI();
@@ -366,7 +366,7 @@ public class TankController : MonoBehaviour
     {
         if (!isDestroyed)
         {
-            Debug.Log("ПОМЕР");
+            UnityEngine.Debug.Log("ПОМЕР");
             StartCoroutine(GoToMainMenu(3f));
             isDestroyed = true;
         }
@@ -463,19 +463,19 @@ public class TankController : MonoBehaviour
             Cursor.SetCursor(null, new Vector2(32, 32), CursorMode.Auto);
     }
     bool isZawarudo = false;
-    public void KekW()
+    public void Debug()
     {
         if (Input.GetKeyDown(KeyCode.BackQuote))
         {
             if (!isZawarudo)
             {
                 Time.timeScale = .1f;
-                Debug.Log("таймстоп");
+                UnityEngine.Debug.Log("таймстоп");
                 isZawarudo = true;
             }
             else
             {
-                Debug.Log("нот таймстоп");
+                UnityEngine.Debug.Log("нот таймстоп");
                 Time.timeScale = 1;
                 isZawarudo = false;
             }

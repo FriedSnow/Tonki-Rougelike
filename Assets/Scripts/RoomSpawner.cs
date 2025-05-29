@@ -8,17 +8,14 @@ public class RoomSpawner : MonoBehaviour
     public GameObject itemRoomPrefab; // Префаб комнаты с предметом
     public GameObject bossRoomPrefab; // Префаб комнаты с боссом
     public GameObject closedRoomPrefab; // Префаб закрытой комнаты
-
     public int roomsToSpawn = 10; // Количество комнат для спауна
     public float roomWidth = 16.0f; // Ширина комнаты (в единицах мира)
     public float roomHeight = 9.0f; // Высота комнаты (в единицах мира)
-
     private GameObject startRoom; // Стартовая комната
     private List<GameObject> spawnedRooms = new List<GameObject>(); // Список всех сгенерированных комнат
     private List<Vector2Int> spawnedRoomPositions = new List<Vector2Int>();
     private HashSet<Vector2Int> availablePositions = new HashSet<Vector2Int>();
     private int roomIncrement;
-
     private Vector2Int shopRoomPosition; // Позиция комнаты-магазина
     private Vector2Int itemRoomPosition; // Позиция комнаты с предметом
     private Vector2Int bossRoomPosition; // Позиция комнаты с боссом
@@ -32,20 +29,16 @@ public class RoomSpawner : MonoBehaviour
             Debug.LogError("Start room not found! Make sure the start room has the 'StartRoom' tag.");
             return;
         }
-
         // Спавним комнаты вокруг стартовой
         roomIncrement = Random.Range(-2, 3);
         roomsToSpawn += roomIncrement;
         Debug.Log(roomsToSpawn + " Rooms spawned");
-
         // Спавним обычные комнаты
         SpawnRoomsAroundStart(startRoom.transform.position, roomsToSpawn);
-
         // Спавним комнату-магазин и комнату с боссом в свободные позиции
         SpawnShopRoom();
         SpawnItemRoom();
         SpawnBossRoom();
-
         // Спавним закрытые комнаты по периметру
         SpawnClosedRooms();
     }
@@ -59,14 +52,12 @@ public class RoomSpawner : MonoBehaviour
         {
             Destroy(item.gameObject); // Уничтожаем предметы магазина
         }
-
         // Удаляем все объекты с тегом "Pickable"
         GameObject[] pickableObjects = GameObject.FindGameObjectsWithTag("Pickable");
         foreach (var pickable in pickableObjects)
         {
             Destroy(pickable); // Уничтожаем объекты с тегом "Pickable"
         }
-
         // Удаляем все сгенерированные комнаты, кроме стартовой
         foreach (var room in spawnedRooms)
         {
@@ -75,33 +66,24 @@ public class RoomSpawner : MonoBehaviour
                 Destroy(room); // Уничтожаем саму комнату
             }
         }
-
         // Очищаем списки
         spawnedRooms.Clear();
         spawnedRoomPositions.Clear();
         availablePositions.Clear();
-
         // Обновляем префабы
         roomPrefabs = newRoomPrefabs.ToArray();
         shopRoomPrefab = newShopRoomPrefab;
         itemRoomPrefab = newItemRoomPrefab;
         bossRoomPrefab = newBossRoomPrefab;
-
         // Заново спавним комнаты
         SpawnRoomsAroundStart(startRoom.transform.position, roomsToSpawn);
-
         // Спавним новые магазин, комнату с предметом и комнату с боссом
         SpawnShopRoom();
         SpawnItemRoom();
         SpawnBossRoom();
-
         // Спавним закрытые комнаты по периметру
         SpawnClosedRooms();
     }
-
-
-
-
     void SpawnRoomsAroundStart(Vector3 startPosition, int count)
     {
         Vector2Int startGridPosition = WorldToGrid(startPosition);
@@ -142,7 +124,6 @@ public class RoomSpawner : MonoBehaviour
             }
         }
     }
-
     void SpawnRoom(Vector2Int gridPosition)
     {
         GameObject roomPrefab = roomPrefabs[Random.Range(0, roomPrefabs.Length)];
@@ -150,7 +131,6 @@ public class RoomSpawner : MonoBehaviour
         GameObject newRoom = Instantiate(roomPrefab, worldPosition, Quaternion.identity);
         spawnedRooms.Add(newRoom); // Добавляем в список сгенерированных комнат
     }
-
     void SpawnShopRoom()
     {
         shopRoomPosition = GetEmptyPosition();
@@ -162,7 +142,6 @@ public class RoomSpawner : MonoBehaviour
             spawnedRoomPositions.Add(shopRoomPosition);
         }
     }
-
     void SpawnItemRoom()
     {
         itemRoomPosition = GetEmptyPosition();
@@ -174,7 +153,6 @@ public class RoomSpawner : MonoBehaviour
             spawnedRoomPositions.Add(itemRoomPosition);
         }
     }
-
     void SpawnBossRoom()
     {
         bossRoomPosition = GetEmptyPositionFarthestFromStart();
@@ -186,7 +164,6 @@ public class RoomSpawner : MonoBehaviour
             spawnedRoomPositions.Add(bossRoomPosition);
         }
     }
-
     void SpawnClosedRooms()
     {
         List<Vector2Int> surroundingPositions = GetSurroundingPositions();
@@ -202,7 +179,6 @@ public class RoomSpawner : MonoBehaviour
             }
         }
     }
-
     Vector2Int GetEmptyPosition()
     {
         List<Vector2Int> emptyPositions = new List<Vector2Int>();
@@ -222,7 +198,6 @@ public class RoomSpawner : MonoBehaviour
 
         return Vector2Int.zero; // Возвращаем пустое значение, если нет свободных позиций
     }
-
     Vector2Int GetEmptyPositionFarthestFromStart()
     {
         Vector2Int startGridPosition = WorldToGrid(startRoom.transform.position);
@@ -244,7 +219,6 @@ public class RoomSpawner : MonoBehaviour
 
         return farthestRoom;
     }
-
     List<Vector2Int> GetSurroundingPositions()
     {
         List<Vector2Int> surroundingPositions = new List<Vector2Int>();
@@ -259,17 +233,14 @@ public class RoomSpawner : MonoBehaviour
 
         return surroundingPositions;
     }
-
     Vector3 GridToWorld(Vector2Int gridPosition)
     {
         return new Vector3(gridPosition.x * roomWidth, 0, gridPosition.y * roomHeight);
     }
-
     Vector2Int WorldToGrid(Vector3 worldPosition)
     {
         return new Vector2Int(Mathf.RoundToInt(worldPosition.x / roomWidth), Mathf.RoundToInt(worldPosition.z / roomHeight));
     }
-
     void ShuffleArray(Vector2Int[] array)
     {
         for (int i = 0; i < array.Length; i++)

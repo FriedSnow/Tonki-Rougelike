@@ -73,7 +73,7 @@ public class EnemyController : MonoBehaviour
                     bossHealth.ShowHealthBar(health, "3");
                     decisionTime *= 3;
                     projectileSpeed *= 1.5f;
-                    textSlide.ShowItemName("третий чел", 3f, "опасный я хз");
+                    textSlide.ShowItemName("третий чел", 3f, "третий");
                     break;
             }
         }
