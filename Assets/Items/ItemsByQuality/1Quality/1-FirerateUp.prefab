@@ -156,7 +156,7 @@ MonoBehaviour:
   damageChange: 0
   maxHealthChange: 0
   maxSpeedChange: 0
-  fireRateChange: -0.05
+  fireRateChange: -0.02
   projectileSpeedChange: 0
   luckChange: 0
   healthChange: 0
