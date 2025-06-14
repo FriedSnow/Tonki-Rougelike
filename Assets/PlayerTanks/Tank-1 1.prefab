@@ -178,7 +178,7 @@ MonoBehaviour:
   secondaryBulletPrefab: {fileID: 0}
   baseBulletPrefab: {fileID: 0}
   Inventory: []
-  cursorTexture: {fileID: 0}
+  cursorTexture: {fileID: 2800000, guid: 3af752dbd3f525a43a6bb27eb86030de, type: 3}
   turret: {fileID: 3180148892295997893}
   firePoint: {fileID: 7752196787774966830}
   firePoints: []

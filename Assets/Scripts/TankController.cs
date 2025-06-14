@@ -370,7 +370,8 @@ public class TankController : MonoBehaviour
             StartCoroutine(GoToMainMenu(3f));
             isDestroyed = true;
         }
-        if (PlayerPrefs.GetInt("Unlockable5") == 0)
+        Progression.IncrementProgression(2);
+        if (PlayerPrefs.GetInt("Unlockable5") == 0 && Progression.GetProgression(2) >= 10)
         {
             PlayerPrefs.SetInt("Unlockable5", 1);
             textSlide.ShowItemName("Достижение получено!", Color.cyan);
