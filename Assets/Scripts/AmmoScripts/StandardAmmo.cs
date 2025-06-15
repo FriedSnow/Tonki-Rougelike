@@ -25,7 +25,7 @@ public class StandardAmmo : MonoBehaviour
             if (PlayerPrefs.GetInt("Unlockable1") == 0)
             {
                 PlayerPrefs.SetInt("Unlockable1", 1);
-                textSlide.ShowItemName("Достижение получено!", Color.cyan);
+                textSlide.ShowItemName("Достижение получено!", Color.cyan, "...");
             }
         }
         if (!isHit)

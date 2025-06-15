@@ -186,7 +186,7 @@ public class EnemyController : MonoBehaviour
             if (PlayerPrefs.GetInt("Unlockable4") == 0)
             {
                 PlayerPrefs.SetInt("Unlockable4", 1);
-                textSlide.ShowItemName("Достижение получено!", Color.cyan);
+                textSlide.ShowItemName("Достижение получено!", Color.cyan, "...");
             }
         }
     }

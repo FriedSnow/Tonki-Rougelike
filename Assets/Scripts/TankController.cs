@@ -375,7 +375,7 @@ public class TankController : MonoBehaviour
         if (PlayerPrefs.GetInt("Unlockable5") == 0 && Progression.GetProgression(2) >= 10)
         {
             PlayerPrefs.SetInt("Unlockable5", 1);
-            textSlide.ShowItemName("Достижение получено!", Color.cyan);
+            textSlide.ShowItemName("Достижение получено!", Color.cyan, "...");
         }
     }
 
@@ -403,7 +403,7 @@ public class TankController : MonoBehaviour
         if (coins >= 15 && PlayerPrefs.GetInt("Unlockable2") == 0)
         {
             PlayerPrefs.SetInt("Unlockable2", 1);
-            textSlide.ShowItemName("Достижение получено!", Color.cyan);
+            textSlide.ShowItemName("Достижение получено!", Color.cyan, "...");
         }
     }
     public void GetUI()
