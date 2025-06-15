@@ -94,6 +94,10 @@ public class DeveloperConsole : StandardItem
                 player.Heal(10);
                 player.AddArmor(10);
                 break;
+            case "unlock":
+                PlayerPrefs.SetInt("Unlockable3", 1);
+                textSlide.ShowItemName("Достижение получено!", Color.cyan);
+                break;
             default:
                 Debug.Log($"Unknown command: {commandName}");
                 break;
