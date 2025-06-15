@@ -31,6 +31,7 @@ public class TankController : MonoBehaviour
     public GameObject primaryBulletPrefab;
     public GameObject secondaryBulletPrefab;
     public GameObject baseBulletPrefab;
+    public GameObject startItem;
     // ---------- ---------- ---------- ---------- ---------- 
     [Header("Инвентарь (зачем то)")]
     public List<string> Inventory = new List<string>();
@@ -89,10 +90,10 @@ public class TankController : MonoBehaviour
             chromaticAberration.active = true; // Убедимся, что эффект активен
         }
         else
-        {
             UnityEngine.Debug.LogWarning("PostProcessVolume с эффектом Chromatic Aberration не найден!");
-        }
-
+            
+        if (startItem != null)
+            Instantiate(startItem, transform.position + new Vector3(10, 0, 0), Quaternion.identity);
     }
 
     // Update is called once per frame
@@ -103,7 +104,7 @@ public class TankController : MonoBehaviour
         if (!isDestroyed)
         {
             Move();
-            Aim(); 
+            Aim();
             Shoot(damage);
         }
         CheckUnlockForCoins();

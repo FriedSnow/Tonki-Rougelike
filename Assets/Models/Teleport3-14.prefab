@@ -210,6 +210,7 @@ MonoBehaviour:
   shopRoomPrefab: {fileID: 5601118762228028324, guid: febf4cecc36f6df48b6419f59afb6e35, type: 3}
   itemRoomPrefab: {fileID: 5601118762228028324, guid: d4e296b58d26fb54887e15596fe5b11f, type: 3}
   bossRoomPrefab: {fileID: 5601118762228028324, guid: 2b48e773e1cf1a940832667bcba7b42a, type: 3}
+  isEnd: 0
 --- !u!1 &3794949509022366818
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,11 +364,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomPrefabs:
-  - {fileID: 5601118762228028324, guid: d7418f6b84272d34db37b6124df58a60, type: 3}
   - {fileID: 5601118762228028324, guid: 3bef25d884e6acf4481adaec4a7ea229, type: 3}
-  shopRoomPrefab: {fileID: 5601118762228028324, guid: febf4cecc36f6df48b6419f59afb6e35, type: 3}
-  itemRoomPrefab: {fileID: 5601118762228028324, guid: d4e296b58d26fb54887e15596fe5b11f, type: 3}
+  shopRoomPrefab: {fileID: 0}
+  itemRoomPrefab: {fileID: 0}
   bossRoomPrefab: {fileID: 5601118762228028324, guid: 6412f8be847b8934396d8b7bae356607, type: 3}
+  isEnd: 1
 --- !u!1 &6770450716085857824
 GameObject:
   m_ObjectHideFlags: 0

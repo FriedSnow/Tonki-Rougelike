@@ -44,45 +44,63 @@ public class RoomSpawner : MonoBehaviour
     }
 
     // Новый метод для удаления всех комнат кроме стартовой и генерации новых
-    public void RegenerateRooms(List<GameObject> newRoomPrefabs, GameObject newShopRoomPrefab, GameObject newItemRoomPrefab, GameObject newBossRoomPrefab)
+    public void RegenerateRooms(List<GameObject> newRoomPrefabs, GameObject newShopRoomPrefab,
+                            GameObject newItemRoomPrefab, GameObject newBossRoomPrefab, bool isEnd = false)
     {
         // Удаляем все объекты ShopItem в сцене
         ShopItem[] shopItems = FindObjectsOfType<ShopItem>();
         foreach (var item in shopItems)
         {
-            Destroy(item.gameObject); // Уничтожаем предметы магазина
+            Destroy(item.gameObject);
         }
+
         // Удаляем все объекты с тегом "Pickable"
         GameObject[] pickableObjects = GameObject.FindGameObjectsWithTag("Pickable");
         foreach (var pickable in pickableObjects)
         {
-            Destroy(pickable); // Уничтожаем объекты с тегом "Pickable"
+            Destroy(pickable);
         }
+
         // Удаляем все сгенерированные комнаты, кроме стартовой
         foreach (var room in spawnedRooms)
         {
             if (room != startRoom)
             {
-                Destroy(room); // Уничтожаем саму комнату
+                Destroy(room);
             }
         }
+
         // Очищаем списки
         spawnedRooms.Clear();
         spawnedRoomPositions.Clear();
         availablePositions.Clear();
+
         // Обновляем префабы
         roomPrefabs = newRoomPrefabs.ToArray();
         shopRoomPrefab = newShopRoomPrefab;
         itemRoomPrefab = newItemRoomPrefab;
         bossRoomPrefab = newBossRoomPrefab;
-        // Заново спавним комнаты
-        SpawnRoomsAroundStart(startRoom.transform.position, roomsToSpawn);
-        // Спавним новые магазин, комнату с предметом и комнату с боссом
-        SpawnShopRoom();
-        SpawnItemRoom();
-        SpawnBossRoom();
-        // Спавним закрытые комнаты по периметру
-        SpawnClosedRooms();
+
+        // Если это конец — спавним только комнату с боссом
+        if (isEnd)
+        {
+            Vector2Int startGridPosition = WorldToGrid(startRoom.transform.position);
+            spawnedRoomPositions.Add(startGridPosition); // добавляем стартовую комнату!
+            availablePositions.Add(startGridPosition);
+
+            SpawnSingleBossRoom();
+            SpawnClosedRooms();
+        }
+
+        else
+        {
+            // Иначе — обычная генерация
+            SpawnRoomsAroundStart(startRoom.transform.position, roomsToSpawn);
+            SpawnShopRoom();
+            SpawnItemRoom();
+            SpawnBossRoom();
+            SpawnClosedRooms();
+        }
     }
     void SpawnRoomsAroundStart(Vector3 startPosition, int count)
     {
@@ -250,5 +268,18 @@ public class RoomSpawner : MonoBehaviour
             array[i] = array[randomIndex];
             array[randomIndex] = temp;
         }
+    }
+    void SpawnSingleBossRoom()
+    {
+        Vector2Int startGridPosition = WorldToGrid(startRoom.transform.position);
+
+        // Спавним босса рядом со стартовой комнатой
+        Vector2Int bossDirection = new Vector2Int(1, 0); // например, справа от старта
+        bossRoomPosition = startGridPosition + bossDirection;
+
+        Vector3 worldPosition = GridToWorld(bossRoomPosition);
+        GameObject bossRoom = Instantiate(bossRoomPrefab, worldPosition, Quaternion.identity);
+        spawnedRooms.Add(bossRoom);
+        spawnedRoomPositions.Add(bossRoomPosition);
     }
 }

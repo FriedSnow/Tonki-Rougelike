@@ -59,6 +59,14 @@ public class FloorSwitcher : MonoBehaviour
         }
         cameraController.MoveCameraToRoom(new Vector3(0, 85, -18));
         //сюдасюдасюда логику респавна комнат
-        roomSpawner.RegenerateRooms(roomPrefabs, shopRoomPrefab, itemRoomPrefab, bossRoomPrefab);
+        // Сюда логика респавна комнат
+        if (isEnd)
+        {
+            roomSpawner.RegenerateRooms(roomPrefabs, shopRoomPrefab, itemRoomPrefab, bossRoomPrefab, isEnd: true);
+        }
+        else
+        {
+            roomSpawner.RegenerateRooms(roomPrefabs, shopRoomPrefab, itemRoomPrefab, bossRoomPrefab, isEnd: false);
+        }
     }
 }

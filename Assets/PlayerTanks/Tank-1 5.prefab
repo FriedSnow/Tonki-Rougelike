@@ -174,9 +174,10 @@ MonoBehaviour:
   maxCoins: 99
   canTakeHealthUp: 1
   canTakeArmor: 1
-  primaryBulletPrefab: {fileID: 3615019006484314583, guid: 7b6ddecd46010964a90fb7122cadb5a8, type: 3}
+  primaryBulletPrefab: {fileID: 3615019006484314583, guid: 5f4a25064347f4042b1318585afd6e79, type: 3}
   secondaryBulletPrefab: {fileID: 3615019006484314583, guid: 5f4a25064347f4042b1318585afd6e79, type: 3}
   baseBulletPrefab: {fileID: 3615019006484314583, guid: 5f4a25064347f4042b1318585afd6e79, type: 3}
+  startItem: {fileID: 6852267363848333706, guid: 1637e6e7a9886a34883297a49896616e, type: 3}
   Inventory: []
   cursorTexture: {fileID: 2800000, guid: 3af752dbd3f525a43a6bb27eb86030de, type: 3}
   turret: {fileID: 3180148892295997893}
